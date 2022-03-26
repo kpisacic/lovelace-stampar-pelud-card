@@ -13,8 +13,8 @@ The following device types and data are supported:
 There are two options; manual or HACS installation:
 
 *Manual installation*
-- Copy `stamper-pelud-card.js` from `www` repository folder to your Home Assistant configuration `www` folder
-- Copy folder `stampar_icons` with all files from `www` repository folder to your Home Assistant configuration `www` folder
+- Copy `stamper-pelud-card.js` from `dist` repository folder to your Home Assistant configuration `www` folder
+- Copy folder `stampar_icons` with all files from `dist` repository folder to your Home Assistant configuration `www` folder
 
 *HACS installation*
 

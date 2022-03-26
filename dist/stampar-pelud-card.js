@@ -1,4 +1,3 @@
-// test
 const LitElement = customElements.get('home-assistant-main')
   ? Object.getPrototypeOf(customElements.get('home-assistant-main'))
   : Object.getPrototypeOf(customElements.get('hui-view'));
@@ -115,15 +114,22 @@ class StamparPeludCard extends LitElement {
             </div>
             <div class="box_state box_state_${sensor.level_name}">${sensor.status.state == "unknown" ? "" : sensor.status.state}&nbsp;</div>
             <div class="box_level">${sensor.status.attributes.level}&nbsp;</div>
-            <div class="box_forecast">
-              <div class="box_forecase_item">26.03.2022.&nbsp;<img style="width: 10px; height: 12px; background-color: green;" /></div>
-              <div class="box_forecase_item">27.03.2022.&nbsp;<img style="width: 10px; height: 12px; background-color: red;" /></div>
-            </div>
+            <div class="box_forecast">${this._renderForecast(sensor.status.attributes.forecast)}</div>
         </div>
       `)}
       </div>
     </ha-card>
     `
+  }
+
+  _renderForecast(o_forecast) {
+    var a_ret = [];
+    if ( typeof(o_forecast) != "undefined" ) {
+      for ( var l_key in o_forecast ) {
+        a_ret.push( html`${l_key.substring(0,6)}<img class="box_forecast_icon box_forecast_icon_${o_forecast[l_key]}" />&nbsp;&nbsp;` );
+      }
+    }
+    return html`${a_ret}`;
   }
 
   _renderMinimalStyle() {
@@ -227,6 +233,27 @@ class StamparPeludCard extends LitElement {
     }
     .box_forecast {
       font-size: x-small;
+      vertical-align: middle;
+    }
+    .box_forecast_icon {
+      vertical-align: middle;
+      width: 10px;
+      height: 10px;
+    }
+    .box_forecast_icon_nemapeludi {
+      background-color: white;
+    }
+    .box_forecast_icon_niska {
+      background-color: green;
+    }
+    .box_forecast_icon_umjerena {
+      background-color: yellow;
+    }
+    .box_forecast_icon_visoka {
+      background-color: orange;
+    }
+    .box_forecast_icon_vrlovisoka {
+      background-color: red;
     }
     </style>`
   }
