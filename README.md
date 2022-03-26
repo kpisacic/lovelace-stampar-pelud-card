@@ -13,8 +13,9 @@ The following device types and data are supported:
 There are two options; manual or HACS installation:
 
 *Manual installation*
-- Copy `stamper-pelud-card.js` from `dist` repository folder to your Home Assistant configuration `www` folder
-- Copy folder `stampar_icons` with all files from `dist` repository folder to your Home Assistant configuration `www` folder
+- Create under your `www` folder subfolders `community`, and under it `lovelace-stampar-pelud-card`
+- Copy `stamper-pelud-card.js` from `dist` repository folder to previously created `lovelace-stampar-pelud-card`
+- Copy folder `stampar_icons` with all files from `dist` repository folder to your Home Assistant configuration `lovelace-stampar-pelud-card` folder (as new subfolder `stampar_icons`)
 
 *HACS installation*
 
@@ -26,14 +27,7 @@ There are two options; manual or HACS installation:
 
 To add custom card for Štampar pollen forecast, add following to your lovelace configuration YAML file:
 
-1. Under resources section add custom card definition 
-
-```yaml
-resources:
-  - type: js
-    url: /local/stampar-pelud-card.js
-```
-
+1. Add resources to lovelace configuration (iz using HACS installation, you can skip this point) `local/community/lovelace-stampar-pelud-card/stampar-pelud-card.js`
 
 2. In views and cards section add following card
 
@@ -42,11 +36,11 @@ resources:
       - type: 'custom:stampar-pelud-card'
         sensor: Peludna prognoza
         allergens: [3,25,5,6]
-        icons: simple
+        icons: pictogram
 ```
-
+Configuration options:
 - `sensor` - mandatory attribute, you should state name of the entity configured in sensor compontent
-- `allergens` - optional attribute, you can specify which plants to display, if left empty display all plants from sensor
+- `allergens` - optional attribute, you can specify which plants to display - see [plants](#plants) bellow, if left empty display all plants from sensor
 - `icons` - optional which icons to use, options are: pictogram, set1, set2
 
 ## plants

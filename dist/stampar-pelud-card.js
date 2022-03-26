@@ -110,7 +110,7 @@ class StamparPeludCard extends LitElement {
         <div class="sensor" @click="${() => this._sensorAttr(sensor.sensor_id)}">
             <div class="box_name">${sensor.status.attributes.name}</div>
             <div class="box_icon_${sensor.level_name}">
-              <img class="box_icon ${l_ext == "svg" ? "box_icon_filter_" + sensor.level_name : "" }" src="/local/stampar_icons/${sensor.allergen_id}${l_suffix}${l_ext == "svg" && sensor.level_name != "unknown" ? "_0" : ""}.${l_ext}" />
+              <img class="box_icon ${l_ext == "svg" ? "box_icon_filter_" + sensor.level_name : "" }" src="/local/community/lovelace-stampar-pelud-card/stampar_icons/${sensor.allergen_id}${l_suffix}${l_ext == "svg" && sensor.level_name != "unknown" ? "_0" : ""}.${l_ext}" />
             </div>
             <div class="box_state box_state_${sensor.level_name}">${sensor.status.state == "unknown" ? "" : sensor.status.state}&nbsp;</div>
             <div class="box_level">${sensor.status.attributes.level != sensor.status.state ? sensor.status.attributes.level : ""}&nbsp;</div>
