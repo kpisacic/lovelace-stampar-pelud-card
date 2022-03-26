@@ -1,0 +1,7 @@
+{
+    "name": "Lovelace card for Štampar Pollen Forecast for Croatia - lovelace card",
+    "render_readme": true,
+    "filename": "stampar-pelud-card.js",
+    "country": ["HR"],
+    "homeassistant": "2021.12.0"
+}
