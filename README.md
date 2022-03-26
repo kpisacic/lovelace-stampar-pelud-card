@@ -24,7 +24,7 @@ There are two options; manual or HACS installation:
 
 ## Custom card
 
-To add custom card for Ĺ tampar pollen forecast, add following to your lovelace configuration YAML file:
+To add custom card for Štampar pollen forecast, add following to your lovelace configuration YAML file:
 
 1. Under resources section add custom card definition 
 
