@@ -113,7 +113,7 @@ class StamparPeludCard extends LitElement {
               <img class="box_icon ${l_ext == "svg" ? "box_icon_filter_" + sensor.level_name : "" }" src="/local/stampar_icons/${sensor.allergen_id}${l_suffix}${l_ext == "svg" && sensor.level_name != "unknown" ? "_0" : ""}.${l_ext}" />
             </div>
             <div class="box_state box_state_${sensor.level_name}">${sensor.status.state == "unknown" ? "" : sensor.status.state}&nbsp;</div>
-            <div class="box_level">${sensor.status.attributes.level}&nbsp;</div>
+            <div class="box_level">${sensor.status.attributes.level != sensor.status.state ? sensor.status.attributes.level : ""}&nbsp;</div>
             <div class="box_forecast">${this._renderForecast(sensor.status.attributes.forecast)}</div>
         </div>
       `)}
