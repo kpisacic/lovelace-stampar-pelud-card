@@ -1,8 +1,8 @@
 # lovelace-stampar-pelud-card
-Lovelace card for Home Assistana, Pollen alergy for Republic of Croatia, by Public Health Service "Andrija Ĺ tampar"
+Lovelace card for Home Assistana, Pollen alergy for Republic of Croatia, by Public Health Service "Andrija Štampar"
 
 The `stampar_pelud` sensor platform provide pollen forecast data for Republic of Croatia. Data is provided by
-Public Health Institute "Andrija Ĺ tampar"  - https://stampar.hr/hr/peludna-prognoza .
+Public Health Institute "Andrija Štampar"  - https://stampar.hr/hr/peludna-prognoza .
 
 The following device types and data are supported:
 
@@ -53,7 +53,7 @@ resources:
 
     2    Lijeska     
     3    Joha        
-    4    ÄŚempresi    
+    4    Čempresi    
     5    Jasen       
     6    Breza       
     7    Grab        
@@ -75,7 +75,7 @@ resources:
     26   Lipa        
     27   Orah        
     28   Kiselica    
-    90   DrveÄ‡e      
+    90   Drveće      
     10   Trave       
     92   Korovi      
 
