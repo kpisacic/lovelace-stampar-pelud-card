@@ -39,6 +39,7 @@ class StamparPeludCard extends LitElement {
     }
     
     setConfig(config) {
+        console.log(config.allergens);
         if (!config.sensor) {
             throw new Error('Please define "sensor" entity in the card config');
         }
@@ -47,9 +48,11 @@ class StamparPeludCard extends LitElement {
             this.allergens = this.sensorTypes;
         }
         else if ( ! ( config.allergens instanceof Array ) ) {
-            throw new Error('Definition of "sensor" in the card config needs to be array - e.g. [1,2,3]');
+            throw new Error('Definition of "allergens" in the card config needs to be array - e.g. [1,2,3]');
         }
         else {
+            console.log(config.allergens);
+            this.allergens = {};
             for( var i in config.allergens ) {
                 this.allergens[config.allergens[i]]=this.sensorTypes[config.allergens[i]];
             }
