@@ -105,6 +105,21 @@ class StamparPeludCard extends LitElement {
             break;
     }
     //console.log(this.sensors);
+    this.sensors.sort( (a,b) => {
+      const levelA = a.level_name;
+      const levelB = b.level_name;
+      if (levelA == levelB ) {
+        return 0;
+      }
+      if (levelA == "unknown" && levelB != "unknown") {
+        return 1;
+      }
+      if (levelA != "unknown" && levelB == "unknown") {
+        return -1;
+      }
+      return -1;
+    } );
+    //console.log(this.sensors);
     return html
     `
     <ha-card header="${this.header} ${this.location} ${this.date}">
