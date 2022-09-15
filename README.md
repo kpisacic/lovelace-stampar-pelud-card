@@ -37,11 +37,13 @@ To add custom card for Štampar pollen forecast, add following to your lovelace 
         sensor: Peludna prognoza
         allergens: [3,25,5,6]
         icons: pictogram
+        visible_only_active: true
 ```
 Configuration options:
 - `sensor` - mandatory attribute, you should state name of the entity configured in sensor compontent
 - `allergens` - optional attribute, you can specify which plants to display - see [plants](#plants) bellow, if left empty display all plants from sensor
 - `icons` - optional which icons to use, options are: pictogram, set1, set2
+- `visible_only_active` - if set to true will show only active allergens, default is false to show all allergens
 
 ## plants
 

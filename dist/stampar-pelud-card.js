@@ -39,7 +39,7 @@ class StamparPeludCard extends LitElement {
     }
     
     setConfig(config) {
-        console.log(config.allergens);
+        //console.log(config.allergens);
         if (!config.sensor) {
             throw new Error('Please define "sensor" entity in the card config');
         }
@@ -65,6 +65,13 @@ class StamparPeludCard extends LitElement {
         }
         else {
             this.icons = config.icons;
+        }
+
+        if ( typeof(config.visible_only_active) == "undefined" ) {
+            this.visible_only_active = false;
+        }
+        else {
+            this.visible_only_active = config.visible_only_active;
         }
 
         this.config = config;
@@ -124,17 +131,19 @@ class StamparPeludCard extends LitElement {
     `
     <ha-card header="${this.header} ${this.location} ${this.date}">
       <div class="flex-container">
-        ${this.sensors.map(sensor => html`
-        <div class="sensor" @click="${() => this._sensorAttr(sensor.sensor_id)}">
-            <div class="box_name">${sensor.status.attributes.name}</div>
-            <div class="box_icon_${sensor.level_name}">
-              <img class="box_icon ${l_ext == "svg" ? "box_icon_filter_" + sensor.level_name : "" }" src="/local/community/lovelace-stampar-pelud-card/stampar_icons/${sensor.allergen_id}${l_suffix}${l_ext == "svg" && sensor.level_name != "unknown" ? "_0" : ""}.${l_ext}" />
-            </div>
-            <div class="box_state box_state_${sensor.level_name}">${sensor.status.state == "unknown" ? "" : sensor.status.state}&nbsp;</div>
-            <div class="box_level">${sensor.status.attributes.level != sensor.status.state ? sensor.status.attributes.level : ""}&nbsp;</div>
-            <div class="box_forecast">${this._renderForecast(sensor.status.attributes.forecast)}</div>
-        </div>
-      `)}
+        ${this.sensors.map(sensor => ( this.visible_only_active == false || sensor.level_name != 'unknown' ) ?
+           html
+            `<div class="sensor" @click="${() => this._sensorAttr(sensor.sensor_id)}">
+                <div class="box_name">${sensor.status.attributes.name}</div>
+                <div class="box_icon_${sensor.level_name}">
+                  <img class="box_icon ${l_ext == "svg" ? "box_icon_filter_" + sensor.level_name : "" }" src="/local/community/lovelace-stampar-pelud-card/stampar_icons/${sensor.allergen_id}${l_suffix}${l_ext == "svg" && sensor.level_name != "unknown" ? "_0" : ""}.${l_ext}" />
+                </div>
+                <div class="box_state box_state_${sensor.level_name}">${sensor.status.state == "unknown" ? "" : sensor.status.state}&nbsp;</div>
+                <div class="box_level">${sensor.status.attributes.level != sensor.status.state ? sensor.status.attributes.level : ""}&nbsp;</div>
+                <div class="box_forecast">${this._renderForecast(sensor.status.attributes.forecast)}</div>
+            </div>`
+            : html ``
+        )}
       </div>
     </ha-card>
     `
